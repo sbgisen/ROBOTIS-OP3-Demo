@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <launch>
-  <param name="robot_description" command="$(find xacro)/xacro.py '$(find op3_description)/urdf/robotis_op3.urdf.xacro'"/>
+  <param name="robot_description" command="$(find xacro)/xacro '$(find op3_description)/urdf/robotis_op3.urdf.xacro'"/>
 
   <!-- Send fake joint values and monitoring present joint angle -->
   <node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher">
@@ -9,7 +9,7 @@
   </node>
 
   <!-- Combine joint values -->
-  <node pkg="robot_state_publisher" type="state_publisher" name="robot_state_publisher">
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
     <remap from="/joint_states" to="/robotis/present_joint_states" />
   </node>
 
